@@ -1,0 +1,46 @@
+package test;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class BasicTestNG extends Test3 {
+	@Test
+	public void demo() throws IOException {
+		
+		
+		
+	}
+	@Test(dataProvider="data")
+	public void test2(String username, String password) {
+		System.out.println(username);
+		System.out.println(password);
+	}
+	@AfterTest
+	public void bftest() {
+		System.out.println("I will execute last in this test case");
+	}
+	@AfterSuite
+	public void AFSuite() throws IOException {
+		moba();
+		System.out.println("I will execute at the last of the entire suite");
+	}
+	@DataProvider(name="data")
+	public Object[][] getData(){
+		Object[][] data=new Object[2][2];
+		data[0][0]="firstusername";
+		data[0][1]="firstpassword";
+		
+		data[1][0]="secondusername";
+		data[1][1]="secondpassword";
+		
+		return data;
+		
+		
+	}
+
+}

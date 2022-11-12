@@ -1,0 +1,25 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class pract {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ak143\\Downloads\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.udemy.com/");
+		WebElement foot=driver.findElement(By.className("udlite-footer"));
+		WebElement column=foot.findElement(By.xpath("//*[@id=\"udemy\"]/div[2]/div[3]/footer/div[3]/div[1]/ul[1]"));
+		
+		for(int i=1;i<=column.findElements(By.tagName("a")).size();i++)
+		{
+			String newtab=Keys.chord(Keys.CONTROL,Keys.ENTER);
+			column.findElements(By.tagName("a")).get(i).sendKeys(newtab);
+		}
+
+	}
+
+}
